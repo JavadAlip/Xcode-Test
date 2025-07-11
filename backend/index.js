@@ -12,8 +12,13 @@ const app = express();
 
 // ✅ Fix for CORS issue with Vercel
 const corsOptions = {
-  origin: "https://xcode-test-frontend.vercel.app",
+  origin: [
+    "https://xcode-test-frontend-javads-projects-7199ba88.vercel.app",
+    "https://xcode-test-frontend.vercel.app",
+    "http://localhost:5173"
+  ],
 };
+
 app.use(cors(corsOptions));
 
 app.use(express.json());
