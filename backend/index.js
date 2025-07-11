@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const currentRoute = require("./routes/current");
 const historyRoute = require("./routes/history");
-// const startCronJob = require("./cron/job");
+const startCronJob = require("./cron/job");
 
 dotenv.config();
 
@@ -43,4 +43,4 @@ app.listen(PORT, () => {
 });
 
 // Start cron job
-// startCronJob();
+startCronJob();

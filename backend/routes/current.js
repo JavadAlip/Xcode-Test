@@ -65,10 +65,9 @@ router.post("/", async (req, res) => {
   try {
     const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets", {
       headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/114.0.0.0 Safari/537.36",
-        "Accept": "application/json",
+        "User-Agent": "axios"
       },
+
       params: {
         vs_currency: "usd",
         order: "market_cap_desc",

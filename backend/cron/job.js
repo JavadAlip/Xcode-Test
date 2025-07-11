@@ -43,8 +43,6 @@
 
 // module.exports = startCronJob;
 
-
-
 const cron = require("node-cron");
 const axios = require("axios");
 const HistoryData = require("../models/HistoryData");
@@ -56,9 +54,7 @@ const startCronJob = () => {
     try {
       const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets", {
         headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/114.0.0.0 Safari/537.36",
-          "Accept": "application/json",
+          "User-Agent": "axios" // ✅ critical fix
         },
         params: {
           vs_currency: "usd",
