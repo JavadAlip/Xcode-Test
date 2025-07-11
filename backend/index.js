@@ -53,7 +53,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const currentRoute = require("./routes/current");
 const historyRoute = require("./routes/history");
-const startPlaywrightCronJob = require("./cron/playwrightJob"); // ✅ Replace this line
+const startPlaywrightCronJob = require("./cron/job"); // ✅ Replace this line
 
 dotenv.config();
 
