@@ -70,10 +70,6 @@ const HistoryData = require("../models/HistoryData");
 router.post("/", async (req, res) => {
   try {
     const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets", {
-      headers: {
-        "User-Agent": "axios"
-      },
-
       params: {
         vs_currency: "usd",
         order: "market_cap_desc",
