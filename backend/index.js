@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Fix for CORS issue with Vercel
+// Fix for CORS issue with Vercel
 const corsOptions = {
   origin: [
     "https://xcode-test-frontend-javads-projects-7199ba88.vercel.app",
@@ -23,24 +23,24 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-// ✅ MongoDB connection
+// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB error:", err));
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB error:", err));
 
-// ✅ API Routes
+// API Routes
 app.use("/api/coins", currentRoute);
 app.use("/api/history", historyRoute);
 
-// ✅ Start server
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
-// ✅ Start cron job
+// Start cron job
 startCronJob();

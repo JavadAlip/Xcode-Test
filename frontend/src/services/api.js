@@ -1,4 +1,4 @@
-// const BASE_URL = "http://localhost:5000/api/coins"; // Adjust if needed
+// const BASE_URL = "http://localhost:5000/api/coins"; // local test url
 const BASE_URL = "https://xcode-test-backend.onrender.com/api/coins";
 
 export const fetchCoins = async () => {
