@@ -7,7 +7,8 @@ const CoinChart = ({ coinId }) => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/history/${coinId}`);
+        // const res = await fetch(`http://localhost:5000/api/history/${coinId}`);
+        const res = await fetch(`https://xcode-test-backend.onrender.com/api/history/${coinId}`);
         const json = await res.json();
         const formatted = json.map(item => ({
           price: item.price,
