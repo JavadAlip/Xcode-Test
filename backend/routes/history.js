@@ -1,25 +1,24 @@
-
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 const HistoryData = require("../models/HistoryData");
 
-
-// 🔁 POST /api/history — Append a new history snapshot
+// POST /api/history — Append new snapshot
 router.post("/", async (req, res) => {
   try {
     const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets", {
       params: {
         vs_currency: "usd",
-        ids: "bitcoin,ethereum", // Add more coins if needed
+        order: "market_cap_desc",
+        per_page: 10,
+        page: 1,
       },
     });
-    console.log(response.data); 
 
     const coins = response.data;
 
     const saved = await Promise.all(
-      coins.map(coin =>
+      coins.map((coin) =>
         HistoryData.create({
           coinId: coin.id,
           name: coin.name,
@@ -38,7 +37,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 📥 GET /api/history — Get all saved snapshots (latest first)
+// GET /api/history — All snapshots
 router.get("/", async (req, res) => {
   try {
     const data = await HistoryData.find().sort({ timestamp: -1 });
@@ -48,11 +47,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-// 📥 GET /api/history/:coinId — Get history by coinId (for charts)
+// GET /api/history/:coinId — Specific coin's history
 router.get("/:coinId", async (req, res) => {
   const { coinId } = req.params;
-  console.log("✅ Route hit for:", req.params.coinId); // Debug log
-
   try {
     const data = await HistoryData.find({ coinId }).sort({ timestamp: -1 });
     res.json(data);

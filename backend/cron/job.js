@@ -4,7 +4,7 @@ const HistoryData = require("../models/HistoryData");
 
 // Schedule: Every 1 hour (minute 0 of every hour)
 const startCronJob = () => {
-  cron.schedule("*/5 * * * *", async () => {
+  cron.schedule("0 * * * *", async () => {
     console.log("⏳ Fetching crypto data from CoinGecko...");
 
     try {
@@ -29,9 +29,9 @@ const startCronJob = () => {
         });
       }
 
-      console.log("✅ Per 5 Minute crypto data saved.");
+      console.log("Per hour crypto data saved.");
     } catch (err) {
-      console.error("❌ Error fetching data:", err.message);
+      console.error("Error fetching data:", err.message);
     }
   });
 };
